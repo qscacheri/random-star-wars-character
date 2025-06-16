@@ -16,5 +16,7 @@ async function randomCharacter() {
 
 export async function GET() {
     const character = await randomCharacter();
-    return new Response(character.name);
+    const response = new Response(character.name);
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    return response;
 }
